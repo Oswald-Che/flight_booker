@@ -1,0 +1,19 @@
+<%= form_with url: flights_path, method: :get do |form| %>
+    <%= form.label :departure_airport, "Depature Airport" %>
+    <%= form.select(:departure_airport, @airport_options) %>
+    <%= form.label :arrival_airport, "Arrival airport" %>
+    <%= form.select(:arrival_airport, @airport_options) %>
+    <%= form.label :passengers, "Number of Passengers" %>
+    <%= form.select(:passengers, @passengers) %>
+    <%= form.select :date, @flight_dates%> 
+    <%= form.submit "Search" %>
+<% end %>
+
+<% if @selected_flights %>
+    <% if @selected_flights.any?%>
+        <% @selected_flights.each do |flight| %>
+        <% end %>
+    <% else %>
+        <h2>No flight available search again</h2>
+    <% end %>
+<% end%>
