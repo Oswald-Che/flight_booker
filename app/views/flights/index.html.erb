@@ -11,7 +11,13 @@
 
 <% if @selected_flights %>
     <% if @selected_flights.any?%>
-        <% @selected_flights.each do |flight| %>
+        <%= form_with url: root_path, method: :get do |form| %>
+            <% @selected_flights.includes(:departure_airport).includes(:arrival_airport).each do |flight| %>
+                <%= form.label :"flight_#{flight.id}", "Flight #{flight.id}, from #{flight.departure_airport.code} to #{flight.arrival_airport.code}" %>
+                <%= form.radio_button :flight, flight.id %>
+            <% end %>
+            <%= form.hidden_field :passenger, value: @passenger_number%>
+            <%= form.submit "Send"%>
         <% end %>
     <% else %>
         <h2>No flight available search again</h2>
