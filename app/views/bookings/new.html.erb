@@ -5,16 +5,16 @@
     <div>Number of passenger <%= @passenger_amount%></div>
 </div>
 
-<%= form_with model: @flight.bookings.build do |form| %>
+<%= form_with model: @booking do |form| %>
     <%= form.hidden_field :passenger_amount, value: @passenger_amount%>
-    <% @passenger_amount.times do%>
-        <%= form.fields_for @passengers do |sub_form|%>
-            <%= sub_form.label :name, "Name" %>
-            <%= sub_form.text_field :name %>
+    <%= form.fields_for :passengers do |sub_form|%>
+        <%= sub_form.label :name, "Name" %>
+        <%= sub_form.text_field :name %>
 
-            <%= sub_form.label :email, "Email" %>
-            <%= sub_form.text_field :email %>
-        <% end %>
+        <%= sub_form.label :email, "Email" %>
+        <%= sub_form.text_field :email %>
+
+        <%= sub_form.hidden_field :flight_id, value: @flight.id%>
     <% end %>
     <%= form.submit "Create"%>
 <% end %>
