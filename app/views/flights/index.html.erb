@@ -11,7 +11,7 @@
 
 <% if @selected_flights %>
     <% if @selected_flights.any?%>
-        <%= form_with url: root_path, method: :get do |form| %>
+        <%= form_with url: new_booking_path, method: :get do |form| %>
             <% @selected_flights.includes(:departure_airport).includes(:arrival_airport).each do |flight| %>
                 <%= form.label :"flight_#{flight.id}", "Flight #{flight.id}, from #{flight.departure_airport.code} to #{flight.arrival_airport.code}" %>
                 <%= form.radio_button :flight, flight.id %>
