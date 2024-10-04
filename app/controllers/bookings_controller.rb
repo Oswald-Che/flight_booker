@@ -6,6 +6,11 @@ class BookingsController < ApplicationController
     @passenger_amount.times { @booking.passengers.build(flight_id: @flight.id) }
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    @flight = @booking.flight
+  end
+
   def create
     id = params[:booking][:passengers_attributes]["0"][:flight_id]
     @flight = Flight.find(id)

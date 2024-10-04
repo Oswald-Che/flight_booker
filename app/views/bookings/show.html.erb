@@ -1,0 +1,9 @@
+<%= @flight.departure_airport.code %>
+<%= @flight.arrival_airport.code %>
+<%= @flight.start_time_formatted %>
+<%= @booking.passengers.count %>
+<h2>Passenger information</h2>
+<% @booking.passengers.each do |passenger| %>
+ <%= passenger.name%>
+ <%= passenger.email%>
+<% end %>
