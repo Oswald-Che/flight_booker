@@ -1,0 +1,40 @@
+.main-content{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.main-content > .flight-info{
+    font-size: 1.2rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.main-content > .passenger-form > form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.main-content > .passenger-form > form span{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.main-content > .passenger-form > span{
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 800;
+    padding: 12px;
+}
+
+.main-content > .passenger-form > form > div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.main-content > .passenger-form > form input[type="submit"]{
+    width: 80px;
+    margin-top: 12px;
+}

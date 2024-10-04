@@ -1,9 +1,9 @@
-<%= @flight.departure_airport.code %>
-<%= @flight.arrival_airport.code %>
-<%= @flight.start_time_formatted %>
-<%= @booking.passengers.count %>
-<h2>Passenger information</h2>
+<div>Departure Airport: <%= @flight.departure_airport.code %></div>
+<div>Arrival Airport: <%= @flight.arrival_airport.code %></div>
+<div>Flight Day: <%= @flight.start_time_formatted %></div>
+<div>Passengers Booked: <%= @booking.passengers.count %></div>
+<h2>Passengers information</h2>
 <% @booking.passengers.each do |passenger| %>
- <%= passenger.name%>
- <%= passenger.email%>
+ <div>Name: <%= passenger.name%></div>
+ <div>Email: <%= passenger.email%></div>
 <% end %>

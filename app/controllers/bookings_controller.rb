@@ -15,6 +15,8 @@ class BookingsController < ApplicationController
     id = params[:booking][:passengers_attributes]["0"][:flight_id]
     @flight = Flight.find(id)
     @booking = @flight.bookings.create!(booking_params)
+
+    redirect_to @booking
   end
 
   private

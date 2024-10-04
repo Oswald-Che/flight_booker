@@ -1,0 +1,33 @@
+.main-content > .search-form > form{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.main-content > .search-form > form > div{
+    display: flex;
+    font-family: sans-serif;
+    gap: 8px;
+    font-size: 1.2rem;
+}
+
+.main-content > .search-form > form select{
+    width: 80px;
+    outline: none;
+    cursor: pointer;
+}
+
+.main-content > .select-flight > form{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.main-content > .select-flight > form > div{
+    font-size: 1.2rem;
+}
+
+.select-flight > form input[type="submit"]{
+    margin-top: 12px;
+    width: 80px;
+}

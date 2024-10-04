@@ -1,20 +1,29 @@
-<div>
-    <div> Departure Airport:<%= @flight.departure_airport.code %></div>
-    <div> Arrival Airport<%= @flight.arrival_airport.code %>  </div>
-    <div>Departure time: <%= @flight.start_time_formatted %></div>
-    <div>Number of passenger <%= @passenger_amount%></div>
+<% stylesheet_link_tag "booking-new"%>
+<div class="main-content">
+    <div class="flight-info">
+        <div> Departure Airport: <%= @flight.departure_airport.code %></div>
+        <div> Arrival Airport: <%= @flight.arrival_airport.code %>  </div>
+        <div>Departure date: <%= @flight.start_time_formatted %></div>
+        <div>Number of passenger: <%= @passenger_amount%></div>
+    </div>
+    
+    <div class="passenger-form"> <span>Add passenger information</span>
+        <%= form_with model: @booking do |form| %>
+            <%= form.hidden_field :passenger_amount, value: @passenger_amount%>
+            <%= form.fields_for :passengers do |sub_form|%>
+                <div> <span>Passenger <%= sub_form.index + 1%></span>
+                    <div>
+                        <%= sub_form.label :name, "Name:" %>
+                        <%= sub_form.text_field :name %>
+                    </div>
+                    <div>
+                        <%= sub_form.label :email, "Email:" %>
+                        <%= sub_form.text_field :email %>
+                    </div>
+                    <%= sub_form.hidden_field :flight_id, value: @flight.id%>
+                </div>
+            <% end %>
+            <%= form.submit "Create"%>
+        <% end %>
+    </div>
 </div>
-
-<%= form_with model: @booking do |form| %>
-    <%= form.hidden_field :passenger_amount, value: @passenger_amount%>
-    <%= form.fields_for :passengers do |sub_form|%>
-        <%= sub_form.label :name, "Name" %>
-        <%= sub_form.text_field :name %>
-
-        <%= sub_form.label :email, "Email" %>
-        <%= sub_form.text_field :email %>
-
-        <%= sub_form.hidden_field :flight_id, value: @flight.id%>
-    <% end %>
-    <%= form.submit "Create"%>
-<% end %>
