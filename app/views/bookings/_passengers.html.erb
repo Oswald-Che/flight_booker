@@ -1,0 +1,12 @@
+ <div data-change-passenger-target="output">
+    <span>Passenger <%= sub_form.index + 1%></span>
+    <div>
+        <%= sub_form.label :name, "Name:" %>
+        <%= sub_form.text_field :name %>
+    </div>
+    <div>
+        <%= sub_form.label :email, "Email:" %>
+        <%= sub_form.text_field :email %>
+    </div>
+    <%= sub_form.hidden_field :flight_id, value: flight.id%>
+</div>
