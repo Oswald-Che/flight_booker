@@ -9,18 +9,31 @@
     
     <div class="passenger-form"> <span>Add passenger information</span>
         <%= form_with model: @booking, data: {controller: 'change-passenger'} do |form| %>
+
             <%= form.hidden_field :passenger_amount, value: @passenger_amount%>
-            <%= form.fields_for :passengers do |sub_form|%>
-                
-                <%= render 'passengers', sub_form: sub_form, flight: @flight%>
+
+
+            <div data-change-passenger-target="output"> 
+                <%= form.fields_for :passengers do |sub_form|%>
+                    <div data-change-passenger-target="node">
+                        <%= render 'passengers', sub_form: sub_form, flight: @flight%>
+                    </div>
+                <% end %>
+            </div>
+
+            <div>
                 <template data-change-passenger-target="template">
-                    
-                    <%= render 'passengers', sub_form: sub_form, flight: @flight%>
+                     <%= form.fields_for :passengers, @booking.passengers.build do |sub_form|%>
+                        <div data-change-passenger-target="node">
+                            <%= render 'passengers', sub_form: sub_form, flight: @flight%>
+                        </div>
+                    <% end %>
                 </template>
-            
-            <% end %>
+            </div>
+
+
             <%= form.submit "Create"%>
-            <%= button_tag 'Add Passenger', type: 'button', data: {action: 'click->change-passenger#addPassenger'} %>
+            <%= button_tag "Add Passenger",type: 'button', data: {action: 'click->change-passenger#addPassenger'} %>
         <% end %>
     </div>
 </div>
