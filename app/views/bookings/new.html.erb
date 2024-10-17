@@ -7,8 +7,8 @@
         <div>Number of passenger: <%= @passenger_amount%></div>
     </div>
     
-    <div class="passenger-form"> <span>Add passenger information</span>
-        <%= form_with model: @booking, data: {controller: 'change-passenger'} do |form| %>
+    <div class="passenger-form"> 
+        <%= form_with model: @booking do |form| %>
 
             <%= form.hidden_field :passenger_amount, value: @passenger_amount%>
 
@@ -33,7 +33,8 @@
 
 
             <%= form.submit "Create"%>
-            <%= button_tag "Add Passenger",type: 'button', data: {action: 'click->change-passenger#addPassenger'} %>
+            <%= button_tag "Add Passenger",type: 'button', data: {action: 'click->change-passenger#addPassenger:once'} %>
+            <%= button_tag "remove Passenger",type: 'button', data: {action: 'click->change-passenger#removePassenger'} %>
         <% end %>
     </div>
 </div>
