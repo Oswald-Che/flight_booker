@@ -15,7 +15,9 @@ class BookingsController < ApplicationController
     id = params[:booking][:passengers_attributes]["0"][:flight_id]
     @flight = Flight.find(id)
     @booking = @flight.bookings.create!(booking_params)
-    
+    @booking.passengers.each do |passenger|
+      PassengerMailer.with(passenger: ).confirmation_email.deliver_later
+    end
 
     redirect_to @booking
   end
