@@ -19,7 +19,7 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: 'work' # role previously added
-  password: <%= ENV['Godofwar.1'] %> # variable previously added
+  password: <%= ENV['DATABASE_PASSWORD'] %> # variable previously added
 
 development:
   <<: *default
