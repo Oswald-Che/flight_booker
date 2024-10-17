@@ -1,16 +1,16 @@
 <% stylesheet_link_tag "booking-new"%>
-<div class="main-content">
+<div class="main-content", data-controller="change-passenger", data-change-passenger-count-value="<%= @passenger_amount %>" >
     <div class="flight-info">
         <div> Departure Airport: <%= @flight.departure_airport.code %></div>
         <div> Arrival Airport: <%= @flight.arrival_airport.code %>  </div>
         <div>Departure date: <%= @flight.start_time_formatted %></div>
-        <div>Number of passenger: <%= @passenger_amount%></div>
+        <div>Number of passenger: <span data-change-passenger-target="passenger"><%= @passenger_amount%></span></div>
     </div>
     
     <div class="passenger-form"> 
         <%= form_with model: @booking do |form| %>
 
-            <%= form.hidden_field :passenger_amount, value: @passenger_amount%>
+            <%= form.hidden_field :passenger_amount, value: @passenger_amount, :"data-change-passenger-target" => "amount"%>
 
 
             <div data-change-passenger-target="output"> 

@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="add-passenger"
 export default class extends Controller {
-    static targets = ["template", "output", "node", "context"]
+    static targets = ["template", "output", "node", "passenger", "amount"]
     static values = {count: Number}
     
     addPassenger() {
@@ -20,5 +20,9 @@ export default class extends Controller {
        
     }
 
- 
+    countValueChanged(){
+        this.passengerTarget.textContent = this.countValue
+        this.amountTarget.value = this.countValue
+    }
+
 }

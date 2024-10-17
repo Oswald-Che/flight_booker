@@ -28,7 +28,7 @@
     padding: 12px;
 }
 
-.main-content > .passenger-form > form > div{
+.main-content > .passenger-form > form > div > div{
     display: flex;
     flex-direction: column;
     gap: 5px;
